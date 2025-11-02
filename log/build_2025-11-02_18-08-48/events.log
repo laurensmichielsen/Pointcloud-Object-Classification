@@ -1,0 +1,270 @@
+[0.000000] (-) TimerEvent: {}
+[0.000117] (pre_processing) JobQueued: {'identifier': 'pre_processing', 'dependencies': OrderedDict()}
+[0.000507] (pre_processing) JobStarted: {'identifier': 'pre_processing'}
+[0.008823] (pre_processing) JobProgress: {'identifier': 'pre_processing', 'progress': 'cmake'}
+[0.009744] (pre_processing) Command: {'cmd': ['/usr/bin/cmake', '/home/la/Pointcloud-Object-Classification/src/pre_processing', '-DCMAKE_INSTALL_PREFIX=/home/la/Pointcloud-Object-Classification/install/pre_processing'], 'cwd': '/home/la/Pointcloud-Object-Classification/build/pre_processing', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'la'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/la'), ('OLDPWD', '/home/la/Pointcloud-Object-Classification/src'), ('ROS_PYTHON_VERSION', '3'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('WSL_DISTRO_NAME', 'Ubuntu-22.04'), ('WAYLAND_DISPLAY', 'wayland-0'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'la'), ('NAME', 'LAPTOP-925NUMJC'), ('WSL_INTEROP', '/run/WSL/383_interop'), ('PULSE_SERVER', 'unix:/mnt/wslg/PulseServer'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm-256color'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files/WindowsApps/MicrosoftCorporationII.WindowsSubsystemForLinux_2.6.1.0_x64__8wekyb3d8bbwe:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files/dotnet/:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/Users/laure/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/laure/AppData/Local/Programs/MiKTeX/miktex/bin/x64/:/mnt/c/Users/laure/AppData/Local/Programs/Microsoft VS Code/bin:/snap/bin'), ('XDG_RUNTIME_DIR', '/run/user/1000/'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('PWD', '/home/la/Pointcloud-Object-Classification/build/pre_processing'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('WSL2_GUI_APPS_ENABLED', '1'), ('HOSTTYPE', 'x86_64'), ('WSLENV', ''), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[0.099989] (-) TimerEvent: {}
+[0.164423] (pre_processing) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.4.0\n'}
+[0.200109] (-) TimerEvent: {}
+[0.300491] (-) TimerEvent: {}
+[0.401252] (-) TimerEvent: {}
+[0.408581] (pre_processing) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.4.0\n'}
+[0.501398] (-) TimerEvent: {}
+[0.545212] (pre_processing) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.601528] (-) TimerEvent: {}
+[0.626725] (pre_processing) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.630777] (pre_processing) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[0.631468] (pre_processing) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.632030] (pre_processing) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.634728] (pre_processing) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.701688] (-) TimerEvent: {}
+[0.715728] (pre_processing) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.719665] (pre_processing) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[0.719871] (pre_processing) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.720156] (pre_processing) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.731429] (pre_processing) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[0.801952] (-) TimerEvent: {}
+[0.825058] (pre_processing) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter \n'}
+[0.893606] (pre_processing) StdoutLine: {'line': b'-- Found rclcpp: 16.0.15 (/opt/ros/humble/share/rclcpp/cmake)\n'}
+[0.902112] (-) TimerEvent: {}
+[0.987638] (pre_processing) StdoutLine: {'line': b'-- Found rosidl_generator_c: 3.1.7 (/opt/ros/humble/share/rosidl_generator_c/cmake)\n'}
+[0.992821] (pre_processing) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.7 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[1.000522] (pre_processing) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 3.1.7 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)\n'}
+[1.002215] (-) TimerEvent: {}
+[1.014868] (pre_processing) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[1.029292] (pre_processing) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[1.069916] (pre_processing) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)\n'}
+[1.072633] (pre_processing) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 6.2.9 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)\n'}
+[1.102663] (-) TimerEvent: {}
+[1.203733] (-) TimerEvent: {}
+[1.304410] (-) TimerEvent: {}
+[1.404913] (-) TimerEvent: {}
+[1.505660] (-) TimerEvent: {}
+[1.606359] (-) TimerEvent: {}
+[1.639642] (pre_processing) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  \n'}
+[1.706657] (-) TimerEvent: {}
+[1.807562] (-) TimerEvent: {}
+[1.908257] (-) TimerEvent: {}
+[2.009299] (-) TimerEvent: {}
+[2.109612] (-) TimerEvent: {}
+[2.209961] (-) TimerEvent: {}
+[2.215972] (pre_processing) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/humble/include  \n'}
+[2.310101] (-) TimerEvent: {}
+[2.410520] (-) TimerEvent: {}
+[2.510877] (-) TimerEvent: {}
+[2.611278] (-) TimerEvent: {}
+[2.711564] (-) TimerEvent: {}
+[2.811853] (-) TimerEvent: {}
+[2.912177] (-) TimerEvent: {}
+[3.012561] (-) TimerEvent: {}
+[3.113010] (-) TimerEvent: {}
+[3.213418] (-) TimerEvent: {}
+[3.222094] (pre_processing) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[3.236150] (pre_processing) StdoutLine: {'line': b'-- Looking for pthread.h\n'}
+[3.313561] (-) TimerEvent: {}
+[3.329295] (pre_processing) StdoutLine: {'line': b'-- Looking for pthread.h - found\n'}
+[3.329544] (pre_processing) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n'}
+[3.413691] (-) TimerEvent: {}
+[3.417728] (pre_processing) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success\n'}
+[3.418438] (pre_processing) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[3.463444] (pre_processing) StdoutLine: {'line': b'-- Found sensor_msgs: 4.9.0 (/opt/ros/humble/share/sensor_msgs/cmake)\n'}
+[3.492424] (pre_processing) StdoutLine: {'line': b'-- Found visualization_msgs: 4.9.0 (/opt/ros/humble/share/visualization_msgs/cmake)\n'}
+[3.513785] (-) TimerEvent: {}
+[3.516850] (pre_processing) StdoutLine: {'line': b"-- Checking for module 'eigen3'\n"}
+[3.524018] (pre_processing) StdoutLine: {'line': b'--   Found eigen3, version 3.4.0\n'}
+[3.543232] (pre_processing) StdoutLine: {'line': b'-- Found Eigen: /usr/include/eigen3 (Required is at least version "3.1") \n'}
+[3.543384] (pre_processing) StdoutLine: {'line': b'-- Eigen found (include: /usr/include/eigen3, version: 3.4.0)\n'}
+[3.561413] (pre_processing) StdoutLine: {'line': b'-- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found suitable version "1.74.0", minimum required is "1.65.0") found components: system filesystem date_time iostreams serialization \n'}
+[3.613908] (-) TimerEvent: {}
+[3.714198] (-) TimerEvent: {}
+[3.814508] (-) TimerEvent: {}
+[3.914821] (-) TimerEvent: {}
+[4.015121] (-) TimerEvent: {}
+[4.059631] (pre_processing) StdoutLine: {'line': b"-- Checking for module 'flann'\n"}
+[4.074645] (pre_processing) StdoutLine: {'line': b'--   Found flann, version 1.9.1\n'}
+[4.115220] (-) TimerEvent: {}
+[4.215504] (-) TimerEvent: {}
+[4.218268] (pre_processing) StdoutLine: {'line': b'-- Found FLANN: /usr/lib/x86_64-linux-gnu/libflann_cpp.so  \n'}
+[4.218442] (pre_processing) StdoutLine: {'line': b'-- FLANN found (include: /usr/include, lib: /usr/lib/x86_64-linux-gnu/libflann_cpp.so)\n'}
+[4.243707] (pre_processing) StdoutLine: {'line': b'-- Found GLEW: /usr/lib/x86_64-linux-gnu/libGLEW.so  \n'}
+[4.278939] (pre_processing) StdoutLine: {'line': b'-- Found OpenGL: /usr/lib/x86_64-linux-gnu/libOpenGL.so  found components: OpenGL GLX \n'}
+[4.315748] (-) TimerEvent: {}
+[4.412686] (pre_processing) StdoutLine: {'line': b'-- Found MPI_C: /usr/lib/x86_64-linux-gnu/libmpi.so (found version "3.1") \n'}
+[4.412876] (pre_processing) StdoutLine: {'line': b'-- Found MPI: TRUE (found version "3.1") found components: C \n'}
+[4.415187] (pre_processing) StdoutLine: {'line': b'-- Found JsonCpp: /usr/lib/x86_64-linux-gnu/libjsoncpp.so (found suitable version "1.9.5", minimum required is "0.7.0") \n'}
+[4.415816] (-) TimerEvent: {}
+[4.516039] (-) TimerEvent: {}
+[4.578226] (pre_processing) StdoutLine: {'line': b'-- Found ZLIB: /usr/lib/x86_64-linux-gnu/libz.so (found version "1.2.11") \n'}
+[4.616158] (-) TimerEvent: {}
+[4.716497] (-) TimerEvent: {}
+[4.789422] (pre_processing) StdoutLine: {'line': b'-- Found PNG: /usr/lib/x86_64-linux-gnu/libpng.so (found version "1.6.37") \n'}
+[4.805307] (pre_processing) StdoutLine: {'line': b'-- Found Eigen3: /usr/include/eigen3 (found version "3.4.0") \n'}
+[4.816569] (-) TimerEvent: {}
+[4.916853] (-) TimerEvent: {}
+[5.017272] (-) TimerEvent: {}
+[5.117715] (-) TimerEvent: {}
+[5.218029] (-) TimerEvent: {}
+[5.289459] (pre_processing) StdoutLine: {'line': b'-- Found X11: /usr/include   \n'}
+[5.290110] (pre_processing) StdoutLine: {'line': b'-- Looking for XOpenDisplay in /usr/lib/x86_64-linux-gnu/libX11.so;/usr/lib/x86_64-linux-gnu/libXext.so\n'}
+[5.318212] (-) TimerEvent: {}
+[5.370474] (pre_processing) StdoutLine: {'line': b'-- Looking for XOpenDisplay in /usr/lib/x86_64-linux-gnu/libX11.so;/usr/lib/x86_64-linux-gnu/libXext.so - found\n'}
+[5.370727] (pre_processing) StdoutLine: {'line': b'-- Looking for gethostbyname\n'}
+[5.418313] (-) TimerEvent: {}
+[5.438556] (pre_processing) StdoutLine: {'line': b'-- Looking for gethostbyname - found\n'}
+[5.438784] (pre_processing) StdoutLine: {'line': b'-- Looking for connect\n'}
+[5.507362] (pre_processing) StdoutLine: {'line': b'-- Looking for connect - found\n'}
+[5.507521] (pre_processing) StdoutLine: {'line': b'-- Looking for remove\n'}
+[5.518440] (-) TimerEvent: {}
+[5.576819] (pre_processing) StdoutLine: {'line': b'-- Looking for remove - found\n'}
+[5.577033] (pre_processing) StdoutLine: {'line': b'-- Looking for shmat\n'}
+[5.618550] (-) TimerEvent: {}
+[5.644661] (pre_processing) StdoutLine: {'line': b'-- Looking for shmat - found\n'}
+[5.644842] (pre_processing) StdoutLine: {'line': b'-- Looking for IceConnectionNumber in ICE\n'}
+[5.713564] (pre_processing) StdoutLine: {'line': b'-- Looking for IceConnectionNumber in ICE - found\n'}
+[5.718629] (-) TimerEvent: {}
+[5.818893] (-) TimerEvent: {}
+[5.919196] (-) TimerEvent: {}
+[6.019503] (-) TimerEvent: {}
+[6.119854] (-) TimerEvent: {}
+[6.120997] (pre_processing) StdoutLine: {'line': b'-- Found EXPAT: /usr/lib/x86_64-linux-gnu/libexpat.so (found version "2.4.7") \n'}
+[6.123620] (pre_processing) StdoutLine: {'line': b'-- Found double-conversion: /usr/lib/x86_64-linux-gnu/libdouble-conversion.so  \n'}
+[6.125464] (pre_processing) StdoutLine: {'line': b'-- Found LZ4: /usr/lib/x86_64-linux-gnu/liblz4.so (found version "1.9.3") \n'}
+[6.127063] (pre_processing) StdoutLine: {'line': b'-- Found LZMA: /usr/lib/x86_64-linux-gnu/liblzma.so (found version "5.2.5") \n'}
+[6.220004] (-) TimerEvent: {}
+[6.228385] (pre_processing) StdoutLine: {'line': b'-- Found JPEG: /usr/lib/x86_64-linux-gnu/libjpeg.so (found version "80") \n'}
+[6.288153] (pre_processing) StdoutLine: {'line': b'-- Found TIFF: /usr/lib/x86_64-linux-gnu/libtiff.so (found version "4.3.0")  \n'}
+[6.290636] (pre_processing) StdoutLine: {'line': b'-- Found Freetype: /usr/lib/x86_64-linux-gnu/libfreetype.so (found version "2.11.1") \n'}
+[6.295355] (pre_processing) StdoutLine: {'line': b'-- Found utf8cpp: /usr/include/utf8cpp  \n'}
+[6.320122] (-) TimerEvent: {}
+[6.344841] (pre_processing) StdoutLine: {'line': b"-- Checking for module 'libusb-1.0'\n"}
+[6.352160] (pre_processing) StdoutLine: {'line': b'--   Found libusb-1.0, version 1.0.25\n'}
+[6.403409] (pre_processing) StdoutLine: {'line': b'-- Found libusb: /usr/lib/x86_64-linux-gnu/libusb-1.0.so  \n'}
+[6.404599] (pre_processing) StdoutLine: {'line': b'-- Found OpenNI: /usr/lib/libOpenNI.so;libusb::libusb (found version "1.5.4.0") \n'}
+[6.404678] (pre_processing) StdoutLine: {'line': b'-- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)\n'}
+[6.420213] (-) TimerEvent: {}
+[6.491467] (pre_processing) StdoutLine: {'line': b'-- Found OpenNI2: /usr/lib/x86_64-linux-gnu/libOpenNI2.so;libusb::libusb (found version "2.2.0.33") \n'}
+[6.491680] (pre_processing) StdoutLine: {'line': b'-- OpenNI2 found (version: 2.2.0.33, include: /usr/include/openni2, lib: /usr/lib/x86_64-linux-gnu/libOpenNI2.so;libusb::libusb)\n'}
+[6.491822] (pre_processing) StderrLine: {'line': b'\x1b[0m** WARNING ** io features related to pcap will be disabled\x1b[0m\n'}
+[6.520290] (-) TimerEvent: {}
+[6.620578] (-) TimerEvent: {}
+[6.720904] (-) TimerEvent: {}
+[6.821218] (-) TimerEvent: {}
+[6.921590] (-) TimerEvent: {}
+[7.022061] (-) TimerEvent: {}
+[7.122531] (-) TimerEvent: {}
+[7.222852] (-) TimerEvent: {}
+[7.298927] (pre_processing) StdoutLine: {'line': b'-- Eigen found (include: /usr/include/eigen3, version: 3.4.0)\n'}
+[7.302683] (pre_processing) StdoutLine: {'line': b'-- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)\n'}
+[7.306463] (pre_processing) StdoutLine: {'line': b'-- OpenNI2 found (version: 2.2.0.33, include: /usr/include/openni2, lib: /usr/lib/x86_64-linux-gnu/libOpenNI2.so;libusb::libusb)\n'}
+[7.322946] (-) TimerEvent: {}
+[7.423239] (-) TimerEvent: {}
+[7.523611] (-) TimerEvent: {}
+[7.624050] (-) TimerEvent: {}
+[7.724508] (-) TimerEvent: {}
+[7.824952] (-) TimerEvent: {}
+[7.925268] (-) TimerEvent: {}
+[8.025588] (-) TimerEvent: {}
+[8.114614] (pre_processing) StdoutLine: {'line': b'-- Found Qhull version 8.0.2\n'}
+[8.125643] (-) TimerEvent: {}
+[8.225909] (-) TimerEvent: {}
+[8.326234] (-) TimerEvent: {}
+[8.426558] (-) TimerEvent: {}
+[8.526873] (-) TimerEvent: {}
+[8.627198] (-) TimerEvent: {}
+[8.727552] (-) TimerEvent: {}
+[8.827875] (-) TimerEvent: {}
+[8.915788] (pre_processing) StdoutLine: {'line': b'-- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)\n'}
+[8.927933] (-) TimerEvent: {}
+[9.028205] (-) TimerEvent: {}
+[9.128550] (-) TimerEvent: {}
+[9.228927] (-) TimerEvent: {}
+[9.329365] (-) TimerEvent: {}
+[9.429688] (-) TimerEvent: {}
+[9.530028] (-) TimerEvent: {}
+[9.630386] (-) TimerEvent: {}
+[9.717756] (pre_processing) StdoutLine: {'line': b'-- looking for PCL_COMMON\n'}
+[9.718041] (pre_processing) StdoutLine: {'line': b'-- Found PCL_COMMON: /usr/lib/x86_64-linux-gnu/libpcl_common.so  \n'}
+[9.718238] (pre_processing) StdoutLine: {'line': b'-- looking for PCL_KDTREE\n'}
+[9.718539] (pre_processing) StdoutLine: {'line': b'-- Found PCL_KDTREE: /usr/lib/x86_64-linux-gnu/libpcl_kdtree.so  \n'}
+[9.718690] (pre_processing) StdoutLine: {'line': b'-- looking for PCL_OCTREE\n'}
+[9.718993] (pre_processing) StdoutLine: {'line': b'-- Found PCL_OCTREE: /usr/lib/x86_64-linux-gnu/libpcl_octree.so  \n'}
+[9.719121] (pre_processing) StdoutLine: {'line': b'-- looking for PCL_SEARCH\n'}
+[9.719504] (pre_processing) StdoutLine: {'line': b'-- Found PCL_SEARCH: /usr/lib/x86_64-linux-gnu/libpcl_search.so  \n'}
+[9.719631] (pre_processing) StdoutLine: {'line': b'-- looking for PCL_SAMPLE_CONSENSUS\n'}
+[9.719999] (pre_processing) StdoutLine: {'line': b'-- Found PCL_SAMPLE_CONSENSUS: /usr/lib/x86_64-linux-gnu/libpcl_sample_consensus.so  \n'}
+[9.720127] (pre_processing) StdoutLine: {'line': b'-- looking for PCL_FILTERS\n'}
+[9.720622] (pre_processing) StdoutLine: {'line': b'-- Found PCL_FILTERS: /usr/lib/x86_64-linux-gnu/libpcl_filters.so  \n'}
+[9.720926] (pre_processing) StdoutLine: {'line': b'-- looking for PCL_2D\n'}
+[9.721157] (pre_processing) StdoutLine: {'line': b'-- Found PCL_2D: /usr/include/pcl-1.12  \n'}
+[9.721378] (pre_processing) StdoutLine: {'line': b'-- looking for PCL_GEOMETRY\n'}
+[9.721539] (pre_processing) StdoutLine: {'line': b'-- Found PCL_GEOMETRY: /usr/include/pcl-1.12  \n'}
+[9.721707] (pre_processing) StdoutLine: {'line': b'-- looking for PCL_IO\n'}
+[9.721925] (pre_processing) StdoutLine: {'line': b'-- Found PCL_IO: /usr/lib/x86_64-linux-gnu/libpcl_io.so  \n'}
+[9.722142] (pre_processing) StdoutLine: {'line': b'-- looking for PCL_FEATURES\n'}
+[9.722329] (pre_processing) StdoutLine: {'line': b'-- Found PCL_FEATURES: /usr/lib/x86_64-linux-gnu/libpcl_features.so  \n'}
+[9.722459] (pre_processing) StdoutLine: {'line': b'-- looking for PCL_ML\n'}
+[9.722660] (pre_processing) StdoutLine: {'line': b'-- Found PCL_ML: /usr/lib/x86_64-linux-gnu/libpcl_ml.so  \n'}
+[9.722824] (pre_processing) StdoutLine: {'line': b'-- looking for PCL_SEGMENTATION\n'}
+[9.723142] (pre_processing) StdoutLine: {'line': b'-- Found PCL_SEGMENTATION: /usr/lib/x86_64-linux-gnu/libpcl_segmentation.so  \n'}
+[9.723349] (pre_processing) StdoutLine: {'line': b'-- looking for PCL_VISUALIZATION\n'}
+[9.723677] (pre_processing) StdoutLine: {'line': b'-- Found PCL_VISUALIZATION: /usr/lib/x86_64-linux-gnu/libpcl_visualization.so  \n'}
+[9.723990] (pre_processing) StdoutLine: {'line': b'-- looking for PCL_SURFACE\n'}
+[9.724478] (pre_processing) StdoutLine: {'line': b'-- Found PCL_SURFACE: /usr/lib/x86_64-linux-gnu/libpcl_surface.so  \n'}
+[9.724664] (pre_processing) StdoutLine: {'line': b'-- looking for PCL_REGISTRATION\n'}
+[9.725072] (pre_processing) StdoutLine: {'line': b'-- Found PCL_REGISTRATION: /usr/lib/x86_64-linux-gnu/libpcl_registration.so  \n'}
+[9.725238] (pre_processing) StdoutLine: {'line': b'-- looking for PCL_KEYPOINTS\n'}
+[9.725565] (pre_processing) StdoutLine: {'line': b'-- Found PCL_KEYPOINTS: /usr/lib/x86_64-linux-gnu/libpcl_keypoints.so  \n'}
+[9.725716] (pre_processing) StdoutLine: {'line': b'-- looking for PCL_TRACKING\n'}
+[9.726063] (pre_processing) StdoutLine: {'line': b'-- Found PCL_TRACKING: /usr/lib/x86_64-linux-gnu/libpcl_tracking.so  \n'}
+[9.726200] (pre_processing) StdoutLine: {'line': b'-- looking for PCL_RECOGNITION\n'}
+[9.726555] (pre_processing) StdoutLine: {'line': b'-- Found PCL_RECOGNITION: /usr/lib/x86_64-linux-gnu/libpcl_recognition.so  \n'}
+[9.726724] (pre_processing) StdoutLine: {'line': b'-- looking for PCL_STEREO\n'}
+[9.727070] (pre_processing) StdoutLine: {'line': b'-- Found PCL_STEREO: /usr/lib/x86_64-linux-gnu/libpcl_stereo.so  \n'}
+[9.727191] (pre_processing) StdoutLine: {'line': b'-- looking for PCL_APPS\n'}
+[9.727508] (pre_processing) StdoutLine: {'line': b'-- Found PCL_APPS: /usr/lib/x86_64-linux-gnu/libpcl_apps.so  \n'}
+[9.727830] (pre_processing) StdoutLine: {'line': b'-- looking for PCL_IN_HAND_SCANNER\n'}
+[9.727995] (pre_processing) StdoutLine: {'line': b'-- Found PCL_IN_HAND_SCANNER: /usr/include/pcl-1.12  \n'}
+[9.728110] (pre_processing) StdoutLine: {'line': b'-- looking for PCL_MODELER\n'}
+[9.728245] (pre_processing) StdoutLine: {'line': b'-- Found PCL_MODELER: /usr/include/pcl-1.12  \n'}
+[9.728544] (pre_processing) StdoutLine: {'line': b'-- looking for PCL_POINT_CLOUD_EDITOR\n'}
+[9.729095] (pre_processing) StdoutLine: {'line': b'-- Found PCL_POINT_CLOUD_EDITOR: /usr/include/pcl-1.12  \n'}
+[9.729216] (pre_processing) StdoutLine: {'line': b'-- looking for PCL_OUTOFCORE\n'}
+[9.729538] (pre_processing) StdoutLine: {'line': b'-- Found PCL_OUTOFCORE: /usr/lib/x86_64-linux-gnu/libpcl_outofcore.so  \n'}
+[9.729694] (pre_processing) StdoutLine: {'line': b'-- looking for PCL_PEOPLE\n'}
+[9.730031] (pre_processing) StdoutLine: {'line': b'-- Found PCL_PEOPLE: /usr/lib/x86_64-linux-gnu/libpcl_people.so  \n'}
+[9.730431] (-) TimerEvent: {}
+[9.730689] (pre_processing) StdoutLine: {'line': b'-- Found PCL: pcl_common;pcl_kdtree;pcl_octree;pcl_search;pcl_sample_consensus;pcl_filters;pcl_io;pcl_features;pcl_ml;pcl_segmentation;pcl_visualization;pcl_surface;pcl_registration;pcl_keypoints;pcl_tracking;pcl_recognition;pcl_stereo;pcl_apps;pcl_outofcore;pcl_people;Boost::system;Boost::filesystem;Boost::date_time;Boost::iostreams;Boost::serialization;/usr/lib/libOpenNI.so;libusb::libusb;/usr/lib/x86_64-linux-gnu/libOpenNI2.so;libusb::libusb;VTK::ChartsCore;VTK::CommonColor;VTK::CommonComputationalGeometry;VTK::CommonCore;VTK::CommonDataModel;VTK::CommonExecutionModel;VTK::CommonMath;VTK::CommonMisc;VTK::CommonTransforms;VTK::FiltersCore;VTK::FiltersExtraction;VTK::FiltersGeneral;VTK::FiltersGeometry;VTK::FiltersModeling;VTK::FiltersSources;VTK::ImagingCore;VTK::ImagingSources;VTK::InteractionImage;VTK::InteractionStyle;VTK::InteractionWidgets;VTK::IOCore;VTK::IOGeometry;VTK::IOImage;VTK::IOLegacy;VTK::IOPLY;VTK::RenderingAnnotation;VTK::RenderingCore;VTK::RenderingContext2D;VTK::RenderingLOD;VTK::RenderingFreeType;VTK::ViewsCore;VTK::ViewsContext2D;VTK::RenderingOpenGL2;VTK::GUISupportQt;FLANN::FLANN;QHULL::QHULL  \n'}
+[9.731722] (pre_processing) StdoutLine: {'line': b'-- Found pcl_conversions: 2.4.5 (/opt/ros/humble/share/pcl_conversions/cmake)\n'}
+[9.830599] (-) TimerEvent: {}
+[9.930950] (-) TimerEvent: {}
+[9.989383] (pre_processing) StdoutLine: {'line': b'-- Found OpenMP_C: -fopenmp (found version "4.5") \n'}
+[10.031062] (-) TimerEvent: {}
+[10.068104] (pre_processing) StdoutLine: {'line': b'-- Found OpenMP_CXX: -fopenmp (found version "4.5") \n'}
+[10.068415] (pre_processing) StdoutLine: {'line': b'-- Found OpenMP: TRUE (found version "4.5")  \n'}
+[10.131173] (-) TimerEvent: {}
+[10.231489] (-) TimerEvent: {}
+[10.331814] (-) TimerEvent: {}
+[10.432129] (-) TimerEvent: {}
+[10.532499] (-) TimerEvent: {}
+[10.559808] (pre_processing) StderrLine: {'line': b'\x1b[31mCMake Error at CMakeLists.txt:19 (find_package):\n'}
+[10.560008] (pre_processing) StderrLine: {'line': b'  By not providing "Findmlpack.cmake" in CMAKE_MODULE_PATH this project has\n'}
+[10.560043] (pre_processing) StderrLine: {'line': b'  asked CMake to find a package configuration file provided by "mlpack", but\n'}
+[10.560070] (pre_processing) StderrLine: {'line': b'  CMake did not find one.\n'}
+[10.560097] (pre_processing) StderrLine: {'line': b'\n'}
+[10.560124] (pre_processing) StderrLine: {'line': b'  Could not find a package configuration file provided by "mlpack" with any\n'}
+[10.560154] (pre_processing) StderrLine: {'line': b'  of the following names:\n'}
+[10.560178] (pre_processing) StderrLine: {'line': b'\n'}
+[10.560201] (pre_processing) StderrLine: {'line': b'    mlpackConfig.cmake\n'}
+[10.560225] (pre_processing) StderrLine: {'line': b'    mlpack-config.cmake\n'}
+[10.560249] (pre_processing) StderrLine: {'line': b'\n'}
+[10.560273] (pre_processing) StderrLine: {'line': b'  Add the installation prefix of "mlpack" to CMAKE_PREFIX_PATH or set\n'}
+[10.560353] (pre_processing) StderrLine: {'line': b'  "mlpack_DIR" to a directory containing one of the above files.  If "mlpack"\n'}
+[10.560387] (pre_processing) StderrLine: {'line': b'  provides a separate development package or SDK, be sure it has been\n'}
+[10.560413] (pre_processing) StderrLine: {'line': b'  installed.\n'}
+[10.560438] (pre_processing) StderrLine: {'line': b'\n'}
+[10.560463] (pre_processing) StderrLine: {'line': b'\x1b[0m\n'}
+[10.560486] (pre_processing) StdoutLine: {'line': b'-- Configuring incomplete, errors occurred!\n'}
+[10.560518] (pre_processing) StdoutLine: {'line': b'See also "/home/la/Pointcloud-Object-Classification/build/pre_processing/CMakeFiles/CMakeOutput.log".\n'}
+[10.571271] (pre_processing) CommandEnded: {'returncode': 1}
+[10.596237] (pre_processing) JobEnded: {'identifier': 'pre_processing', 'rc': 1}
+[10.606651] (-) EventReactorShutdown: {}

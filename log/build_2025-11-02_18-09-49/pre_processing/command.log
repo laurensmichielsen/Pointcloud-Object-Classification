@@ -1,0 +1,2 @@
+Invoking command in '/home/la/Pointcloud-Object-Classification/build/pre_processing': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/la/Pointcloud-Object-Classification/src/pre_processing -DCMAKE_INSTALL_PREFIX=/home/la/Pointcloud-Object-Classification/install/pre_processing
+Invoked command in '/home/la/Pointcloud-Object-Classification/build/pre_processing' returned '1': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/la/Pointcloud-Object-Classification/src/pre_processing -DCMAKE_INSTALL_PREFIX=/home/la/Pointcloud-Object-Classification/install/pre_processing

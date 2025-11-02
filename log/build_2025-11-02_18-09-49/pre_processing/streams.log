@@ -1,0 +1,60 @@
+[0.006s] Invoking command in '/home/la/Pointcloud-Object-Classification/build/pre_processing': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/la/Pointcloud-Object-Classification/src/pre_processing -DCMAKE_INSTALL_PREFIX=/home/la/Pointcloud-Object-Classification/install/pre_processing
+[0.016s] -- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.091s] -- Found rclcpp: 16.0.15 (/opt/ros/humble/share/rclcpp/cmake)
+[0.163s] -- Found rosidl_generator_c: 3.1.7 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.164s] -- Found rosidl_adapter: 3.1.7 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.168s] -- Found rosidl_generator_cpp: 3.1.7 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.173s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.180s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.198s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.198s] -- Found rmw_fastrtps_cpp: 6.2.9 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[2.267s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[2.295s] -- Found sensor_msgs: 4.9.0 (/opt/ros/humble/share/sensor_msgs/cmake)
+[2.311s] -- Found visualization_msgs: 4.9.0 (/opt/ros/humble/share/visualization_msgs/cmake)
+[2.331s] -- Eigen found (include: /usr/include/eigen3, version: 3.4.0)
+[2.968s] -- FLANN found (include: /usr/include, lib: /usr/lib/x86_64-linux-gnu/libflann_cpp.so)
+[4.432s] -- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)
+[4.436s] -- OpenNI2 found (version: 2.2.0.33, include: /usr/include/openni2, lib: /usr/lib/x86_64-linux-gnu/libOpenNI2.so;libusb::libusb)
+[4.436s] [0m** WARNING ** io features related to pcap will be disabled[0m
+[5.239s] -- Eigen found (include: /usr/include/eigen3, version: 3.4.0)
+[5.243s] -- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)
+[5.247s] -- OpenNI2 found (version: 2.2.0.33, include: /usr/include/openni2, lib: /usr/lib/x86_64-linux-gnu/libOpenNI2.so;libusb::libusb)
+[6.035s] -- Found Qhull version 8.0.2
+[6.837s] -- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)
+[7.627s] -- looking for PCL_COMMON
+[7.627s] -- looking for PCL_KDTREE
+[7.627s] -- looking for PCL_OCTREE
+[7.628s] -- looking for PCL_SEARCH
+[7.628s] -- looking for PCL_SAMPLE_CONSENSUS
+[7.628s] -- looking for PCL_FILTERS
+[7.628s] -- looking for PCL_2D
+[7.629s] -- looking for PCL_GEOMETRY
+[7.629s] -- looking for PCL_IO
+[7.629s] -- looking for PCL_FEATURES
+[7.629s] -- looking for PCL_ML
+[7.629s] -- looking for PCL_SEGMENTATION
+[7.630s] -- looking for PCL_VISUALIZATION
+[7.630s] -- looking for PCL_SURFACE
+[7.630s] -- looking for PCL_REGISTRATION
+[7.631s] -- looking for PCL_KEYPOINTS
+[7.631s] -- looking for PCL_TRACKING
+[7.631s] -- looking for PCL_RECOGNITION
+[7.631s] -- looking for PCL_STEREO
+[7.631s] -- looking for PCL_APPS
+[7.632s] -- looking for PCL_IN_HAND_SCANNER
+[7.632s] -- looking for PCL_MODELER
+[7.632s] -- looking for PCL_POINT_CLOUD_EDITOR
+[7.632s] -- looking for PCL_OUTOFCORE
+[7.633s] -- looking for PCL_PEOPLE
+[7.633s] -- Found pcl_conversions: 2.4.5 (/opt/ros/humble/share/pcl_conversions/cmake)
+[7.650s] -- Found OpenMP
+[7.650s] [31mCMake Error at /opt/ros/humble/share/ament_cmake_target_dependencies/cmake/ament_target_dependencies.cmake:77 (message):
+[7.650s]   ament_target_dependencies() the passed package name 'cv_msgs' was not found
+[7.650s]   before
+[7.650s] Call Stack (most recent call first):
+[7.650s]   CMakeLists.txt:53 (ament_target_dependencies)
+[7.650s] 
+[7.650s] [0m
+[7.650s] -- Configuring incomplete, errors occurred!
+[7.650s] See also "/home/la/Pointcloud-Object-Classification/build/pre_processing/CMakeFiles/CMakeOutput.log".
+[7.659s] Invoked command in '/home/la/Pointcloud-Object-Classification/build/pre_processing' returned '1': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/la/Pointcloud-Object-Classification/src/pre_processing -DCMAKE_INSTALL_PREFIX=/home/la/Pointcloud-Object-Classification/install/pre_processing
