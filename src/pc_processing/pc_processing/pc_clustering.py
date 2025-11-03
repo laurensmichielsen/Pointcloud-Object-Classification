@@ -87,6 +87,7 @@ class PointCloudDBSCAN(PointCloudClustering):
     def _run_clustering(self, points: np.ndarray) -> np.ndarray:
         clusterer = DBSCAN(
             eps=self.cluster_distance_threshold,
-            min_samples=self.cluster_min_samples
+            min_samples=self.cluster_min_samples,
+            n_jobs=8
         )
         return clusterer.fit(points).labels_

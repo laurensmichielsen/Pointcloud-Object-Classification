@@ -1,16 +1,26 @@
 <?xml version="1.0"?>
-<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
   <name>pc_processing</name>
-  <version>0.0.0</version>
-  <description>TODO: Package description</description>
-  <maintainer email="laurens.michielsen9@gmail.com">la</maintainer>
-  <license>TODO: License declaration</license>
+  <version>0.0.1</version>
+  <description>Point cloud preprocessing (filtering, ground removal, clustering, cone reconstruction).</description>
 
-  <test_depend>ament_copyright</test_depend>
+  <maintainer email="laurens.michielsen9@gmail.com">Laurens Michielsen</maintainer>
+  <license>Apache-2.0</license>
+
+  <!-- build tool for Python packages in ROS 2 -->
+  <buildtool_depend>ament_python</buildtool_depend>
+
+  <!-- ROS runtime dependencies -->
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+  <exec_depend>visualization_msgs</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>builtin_interfaces</exec_depend>
+
+  <!-- testing / linting -->
+  <test_depend>pytest</test_depend>
   <test_depend>ament_flake8</test_depend>
-  <test_depend>ament_pep257</test_depend>
-  <test_depend>python3-pytest</test_depend>
 
   <export>
     <build_type>ament_python</build_type>

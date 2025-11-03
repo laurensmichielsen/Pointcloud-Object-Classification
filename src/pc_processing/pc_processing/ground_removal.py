@@ -13,7 +13,6 @@ class GroundRemoval:
         number_of_y_chunks,
         distance_threshold,
         number_of_points_per_plane,
-        max_distance,
         min_points_per_chunk
     ):
         self.number_of_iterations = number_of_iterations
@@ -22,7 +21,6 @@ class GroundRemoval:
         self.number_of_y_chunks = number_of_y_chunks
         self.distance_threshold = distance_threshold
         self.number_of_points_per_plane = number_of_points_per_plane
-        self.max_distance = max_distance
         self.min_points_per_chunk = min_points_per_chunk
 
     def remove_ground(self, points_2darray):
@@ -51,8 +49,8 @@ class RansacGroundRemoval(GroundRemoval):
         # Iterate over grid chunks
         for i in range(self.number_of_x_chunks):
             for j in range(self.number_of_y_chunks):
-                x_mask = (points[:, 0] >= x_edges[i]) & (points[:, 0] < x_edges[i + 1])
-                y_mask = (points[:, 1] >= y_edges[j]) & (points[:, 1] < y_edges[j + 1])
+                x_mask = (points[:, 0] >= x_edges[i]) & (points[:, 0] < x_edges[i + 1]) # TODO: improve efficiency
+                y_mask = (points[:, 1] >= y_edges[j]) & (points[:, 1] < y_edges[j + 1]) # TODO: improve efficiency
                 mask = x_mask & y_mask
 
                 chunk_points = points[mask]
@@ -60,6 +58,7 @@ class RansacGroundRemoval(GroundRemoval):
                     continue  # skip empty or too small chunks
 
                 # Run RANSAC on chunk
+                # TODO fix: error -> expects PC message got numpy array so fix
                 pcd = o3d.geometry.PointCloud()
                 pcd.points = o3d.utility.Vector3dVector(chunk_points)
 
