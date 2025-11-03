@@ -17,3 +17,5 @@ The main objectives of this project are:
 2. **Fine-tuning PointNet:** Use a pre-trained PointNet backbone to classify clusters as cones (yellow, blue, orange) or non-cones, exploring efficiency and accuracy trade-offs.
 3. **Lightweight custom network:** Design a smaller neural network to achieve similar classification performance with reduced computational cost.
 
+## Current state
+Currently, a simple pre-processing pipeline has been implemented. 
