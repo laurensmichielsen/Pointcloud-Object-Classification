@@ -18,4 +18,32 @@ The main objectives of this project are:
 3. **Lightweight custom network:** Design a smaller neural network to achieve similar classification performance with reduced computational cost.
 
 ## Current state
-Currently, a simple pre-processing pipeline has been implemented. 
+### Pre-processing pipeline
+The pre-processing pipeline is implemented. It includes the following steps.
+1. Filter the air points and the points that correspond to the car
+2. Segment the pointcloud in a grid of 64x64
+3. RANSAC ground removal
+4. DBSCAN clustering
+5. Reconstruct the cones
+
+A visual of the steps and the succes. A picture of the initial point-cloud:  \\\\
+![Pointcloud](images/original_pc.png)
+\\\\
+A picture of the ground removal:\\\\
+![GroundRemoval](images/ground_removal.png)
+\\\\
+A picture of the proposal centroids
+\\\\
+![proposals](images/proposal_centroids.png)
+## Create rosbridge from WSL to Foxglove on Windows
+Download the rosbridge using the following command
+```bash
+sudo apt install -y ros-humble-foxglove-bridge
+```
+
+Run the rosbridge
+```bash
+ros2 launch foxglove_bridge foxglove_bridge_launch.xml port:=8765
+```
+
+Open the rosbridge under connection on foxglove.

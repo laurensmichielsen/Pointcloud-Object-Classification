@@ -36,14 +36,14 @@ class PointCloudClustering:
             np.ndarray: Cluster centers as [[x, y, z], ...]
         """
         if points.size == 0:
-            return np.empty((0, 3))
-
+            return np.empty((0, 4))
+        
         # Filter by binning (optional noise suppression)
-        binned_points = self.bin_points(points)
+        # binned_points = self.bin_points(points)
+        binned_points = points
+        print(f"Number of binned points: {len(binned_points)}")
         if binned_points.size == 0:
-            return np.empty((0, 3))
-
-        binned_points = np.reshape(binned_points, (-1, 3))
+            return np.empty((0, 4))
 
         # Run clustering in XY space
         cluster_labels = self._run_clustering(binned_points[:, :2])
@@ -53,7 +53,7 @@ class PointCloudClustering:
         for label in np.unique(cluster_labels):
             if label == -1:  # DBSCAN noise
                 continue
-            cluster_points = clustered_points[clustered_points[:, 3] == label][:, :3]
+            cluster_points = clustered_points[clustered_points[:, -1] == label][:, :3]
             centers.append(np.mean(cluster_points, axis=0))
 
         return np.array(centers)

@@ -49,4 +49,5 @@ class ReconstructCone:
             points_full_cluster = points[mask_cluster]
             points_in_boxes.append(points_full_cluster)
 
-        return points_in_boxes
+        all_points = np.vstack(points_in_boxes)
+        return all_points

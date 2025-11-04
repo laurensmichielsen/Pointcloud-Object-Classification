@@ -24,8 +24,7 @@ class Filter:
         return points[filtered_mask]
     
     def air_filter(self, points):
-        filtered_mask = points[:, 2] < self.cone_height
-        return points[filtered_mask]
+        return points
     
     def voxel_filter(self, points):
         voxel_indices = np.floor(points / self.voxel_size).astype(np.int32)

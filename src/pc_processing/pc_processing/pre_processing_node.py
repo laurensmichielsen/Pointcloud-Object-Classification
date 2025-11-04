@@ -10,7 +10,7 @@ from rclpy.qos import QoSProfile, QoSReliabilityPolicy, QoSHistoryPolicy, QoSDur
 from sensor_msgs.msg import PointCloud2
 from visualization_msgs.msg import Marker
 from std_msgs.msg import Header, ColorRGBA
-from geometry_msgs.msg import Vector3
+from geometry_msgs.msg import Vector3, Point
 from builtin_interfaces.msg import Duration
 from builtin_interfaces.msg import Time as RosTime
 
@@ -34,13 +34,13 @@ class PreProcessingNode(Node):
             namespace="",
             parameters=[
                 ("lidar_frame_id", "rslidar"),
-                ("input_pointcloud_topic", "/rslidar_points"), # TODO: check
+                ("input_pointcloud_topic", "/rslidar_points"),
                 ("ground_removal.number_of_iterations", 50),
                 ("ground_removal.number_of_initial_seeds", 10),
                 ("ground_removal.number_of_x_chunks", 10),
                 ("ground_removal.number_of_y_chunks", 10),
                 ("ground_removal.number_of_points_per_plane", 3),
-                ("ground_removal.distance_threshold", 35),
+                ("ground_removal.distance_threshold", 0.02), # distance to the plane
                 ("ground_removal.min_points_per_chunk", 50),
                 ("filter.vehicle_min_x", 0.0),
                 ("filter.vehicle_max_x", 2.9),
@@ -48,9 +48,9 @@ class PreProcessingNode(Node):
                 ("filter.vehicle_max_y", 1.0),
                 ("filter.cone_height", 0.505),
                 ("filter.voxel_size", [0.1, 0.1, 0.1]),
-                ("binning.max_points_in_bin", 30),
-                ("cluster.distance_threshold", 1.5),
-                ("cluster.min_samples", 1),
+                ("binning.max_points_in_bin", 900),
+                ("cluster.distance_threshold", .25),
+                ("cluster.min_samples", 15),
                 ("cluster.max_range", 15.0),
                 ("cluster.min_range", 0.5),
                 ("reconstruct.width_threshold", 0.1475),
@@ -59,7 +59,7 @@ class PreProcessingNode(Node):
                 ("reconstruct.safety_factor", 1.05),
                 ("reconstruct.include_base", False),
                 ("reconstruct.base_buffer", 0.05),
-                ("cv_viz_flag", False),
+                ("cv_viz_flag", True),
             ]
         )
 
@@ -122,22 +122,23 @@ class PreProcessingNode(Node):
         
         # setup publishers for debugging
         self.ground_plane_publisher = self.create_publisher(
-            PointCloud2, "/viz/pointcloud/ground_removed", 1
+            PointCloud2, "/viz/project/pointcloud/ground_removed", 1
         )
         self.filter_publisher = self.create_publisher(
-            PointCloud2, "/viz/pointcloud/filtered", 1
+            PointCloud2, "/viz/project/pointcloud/filtered", 1
         )
         self.centroid_marker_publisher = self.create_publisher(
-            Marker, "/viz/pointcloud/centroids", 1
+            Marker, "/viz/project/pointcloud/centroids", 1
         )
         self.cone_reconstructed_publisher = self.create_publisher(
-            PointCloud2, "/viz/pointcloud/cone_proposals", 1
+            PointCloud2, "/viz/project/pointcloud/cone_proposals", 1
         ) # TODO: make List of Pointclouds, for now just publish just a pc
 
     
     def on_pointcloud_update(self, raw_pointcloud: PointCloud2):
         # Step 1: convert the PC to a numpy 2D array
         points_2darray = parse_pointcloud_msg(raw_pointcloud)
+        print(f"Shape of the input array: {points_2darray}")
         self.points_2darray = points_2darray.copy()
         # check if we only have a 4D array, x, y, z, intensity
         if points_2darray.shape[1] > 4:
@@ -155,6 +156,9 @@ class PreProcessingNode(Node):
         # Step 4: ground removal
         non_ground_points, ground_points, plane_models = self.ground_removal.remove_ground(points_2darray)
 
+        print(f"The number of non-ground points: {len(non_ground_points)}")
+        print(f"The shape of the non-ground points: {non_ground_points.shape}")
+
         # If debug mode is enabled, publish the filtered pc after ground_removal
         if self.debug_mode:
             self.visualize_ground_removed(non_ground_points, raw_pointcloud.header)
@@ -167,7 +171,8 @@ class PreProcessingNode(Node):
             self.visualize_centroids(centroids, raw_pointcloud.header)
         # Step 6: reconstruct cones
         points_in_boxes = self.reconstruct.reconstruct(self.points_2darray, centroids)
-
+        
+        print(points_in_boxes.shape)
         self.visualize_output(points_in_boxes)
 
     def visualize_filtered_points(self, points, timestamp=None):
@@ -182,22 +187,22 @@ class PreProcessingNode(Node):
 
     def visualize_centroids(self, clustered_points, timestamp=None):
         timestamp = self.get_ros_time()
-        centroids = [cluster.mean(axis=0) for cluster in clustered_points]
-        self.centroid_marker_publisher.publish(self.spheres(centroids, timestamp=timestamp))
+        marker_points = [Point(x=float(c[0]), y=float(c[1]), z=float(c[2])) for c in clustered_points]
+        self.centroid_marker_publisher.publish(self.spheres(marker_points, timestamp=timestamp))
 
     def spheres(
-        self, centers, color=ColorRGBA(r=0.0, g=1.0, b=0.0, a=1.0), timestamp=None
+        self, marker_points, color=ColorRGBA(r=0.0, g=1.0, b=0.0, a=1.0), timestamp=None
     ):
+        print(f"Number of centers: {len(marker_points)}")
         timestamp = self.get_ros_time()
         marker = Marker(
             header=Header(frame_id=self.get_parameter("lidar_frame_id").value, stamp=timestamp),
             id=0,
             type=Marker.SPHERE_LIST,
-            points=centers,
+            points=marker_points,
             action=Marker.ADD,
             scale=Vector3(x=0.5, y=0.5, z=0.5),
             color=color,
-            lifetime=Duration(seconds=0.15).to_msg(),
         )
 
         return marker

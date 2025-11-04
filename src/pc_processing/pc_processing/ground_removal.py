@@ -33,7 +33,6 @@ class RansacGroundRemoval(GroundRemoval):
     Ground removal using RANSAC-based plane segmentation per (x, y) chunk.
     """
     def remove_ground(self, points):
-        points = points[:, :3]
         # Compute grid boundaries
         x_min, x_max = np.min(points[:, 0]), np.max(points[:, 0])
         y_min, y_max = np.min(points[:, 1]), np.max(points[:, 1])
@@ -52,14 +51,18 @@ class RansacGroundRemoval(GroundRemoval):
                 y_mask = (points[:, 1] >= y_edges[j]) & (points[:, 1] < y_edges[j + 1]) # TODO: improve efficiency
                 mask = x_mask & y_mask
 
-                chunk_points = points[mask]
-                if chunk_points.shape[0] < self.min_points_per_chunk:
-                    continue  # skip empty or too small chunks
+                chunk_points_full = points[mask]
+
+                chunk_points_xyz = chunk_points_full[:, :3]
+
+                print(f"Number of points in the chunk: {len(chunk_points_xyz)}")
+                if chunk_points_xyz.shape[0] < self.min_points_per_chunk:
+                    continue  # skip empty or too small chunks TODO: check this for segments far away
 
                 # Run RANSAC on chunk
                 # TODO fix: error -> expects PC message got numpy array so fix
                 pcd = o3d.geometry.PointCloud()
-                pcd.points = o3d.utility.Vector3dVector(chunk_points)
+                pcd.points = o3d.utility.Vector3dVector(chunk_points_xyz)
 
                 plane_model, inliers = pcd.segment_plane(
                     distance_threshold=self.distance_threshold,
@@ -73,9 +76,10 @@ class RansacGroundRemoval(GroundRemoval):
                 if abs(c) < 0.5:
                     continue
 
-                inlier_points = chunk_points[inliers]
-                outlier_points = np.delete(chunk_points, inliers, axis=0)
-
+                inlier_points = chunk_points_full[inliers]
+                outlier_points = np.delete(chunk_points_full, inliers, axis=0)
+                print(f"Number of inliear points: {len(inlier_points)}")
+                print(f"Number of outlier points: {len(outlier_points)}")
                 ground_all.append(inlier_points)
                 non_ground_all.append(outlier_points)
                 plane_models.append((a, b, c, d))
