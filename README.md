@@ -26,15 +26,18 @@ The pre-processing pipeline is implemented. It includes the following steps.
 4. DBSCAN clustering
 5. Reconstruct the cones
 
-A visual of the steps and the succes. A picture of the initial point-cloud:  \\\\
+A visual of the steps and the succes. A picture of the initial point-cloud:  
+<br> </br>
 ![Pointcloud](images/original_pc.png)
-\\\\
-A picture of the ground removal:\\\\
+<br> </br>
+A picture of the ground removal:
+<br> </br>
 ![GroundRemoval](images/ground_removal.png)
-\\\\
+<br> </br>
 A picture of the proposal centroids
-\\\\
+<br></br>
 ![proposals](images/proposal_centroids.png)
+<br></br>
 ## Create rosbridge from WSL to Foxglove on Windows
 Download the rosbridge using the following command
 ```bash
