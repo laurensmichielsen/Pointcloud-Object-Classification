@@ -43,7 +43,7 @@ class PointCloudClustering:
         if binned_points.size == 0:
             return np.empty((0, 3))
 
-        binned_points = np.reshape(binned_points, (-1, 4))
+        binned_points = np.reshape(binned_points, (-1, 3))
 
         # Run clustering in XY space
         cluster_labels = self._run_clustering(binned_points[:, :2])
@@ -53,7 +53,7 @@ class PointCloudClustering:
         for label in np.unique(cluster_labels):
             if label == -1:  # DBSCAN noise
                 continue
-            cluster_points = clustered_points[clustered_points[:, 4] == label][:, :3]
+            cluster_points = clustered_points[clustered_points[:, 3] == label][:, :3]
             centers.append(np.mean(cluster_points, axis=0))
 
         return np.array(centers)
@@ -63,7 +63,7 @@ class PointCloudClustering:
         Bins points in an XY grid and removes bins with too high point density.
         """
         if points.size == 0:
-            return np.empty((0, 4))
+            return np.empty((0, 3))
 
         # Compute 2D bin indices (based on XY)
         x_bins = np.digitize(points[:, 0], bins=np.arange(-self.cluster_max_range, self.cluster_max_range))

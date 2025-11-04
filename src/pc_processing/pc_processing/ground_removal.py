@@ -32,9 +32,8 @@ class RansacGroundRemoval(GroundRemoval):
     """
     Ground removal using RANSAC-based plane segmentation per (x, y) chunk.
     """
-    def remove_ground(self, points_2darray):
-        points = points_2darray  # alias for readability
-
+    def remove_ground(self, points):
+        points = points[:, :3]
         # Compute grid boundaries
         x_min, x_max = np.min(points[:, 0]), np.max(points[:, 0])
         y_min, y_max = np.min(points[:, 1]), np.max(points[:, 1])

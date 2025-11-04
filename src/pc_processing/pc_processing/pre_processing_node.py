@@ -1,4 +1,3 @@
-#!/home/la/Pointcloud-Object-Classification/.venv/bin/python3
 import numpy as np
 import rclpy
 
@@ -13,6 +12,7 @@ from visualization_msgs.msg import Marker
 from std_msgs.msg import Header, ColorRGBA
 from geometry_msgs.msg import Vector3
 from builtin_interfaces.msg import Duration
+from builtin_interfaces.msg import Time as RosTime
 
 # local utilities / modules (ensure these modules export these names)
 from .utils import parse_pointcloud_msg, to_pointcloud_msg
@@ -168,23 +168,27 @@ class PreProcessingNode(Node):
         # Step 6: reconstruct cones
         points_in_boxes = self.reconstruct.reconstruct(self.points_2darray, centroids)
 
-        result = to_pointcloud_msg(points_in_boxes, timestamp=timestamp)
+        self.visualize_output(points_in_boxes)
 
-    def visualize_filtered_points(self, points, timestamp=Time()):
+    def visualize_filtered_points(self, points, timestamp=None):
+        timestamp = self.get_ros_time()
         msg = to_pointcloud_msg(points, frame_id=self.get_parameter("lidar_frame_id").value, timestamp=timestamp)
         self.filter_publisher.publish(msg)
 
-    def visualize_ground_removed(self, points, timestamp=Time()):
+    def visualize_ground_removed(self, points, timestamp=None):
+        timestamp=self.get_ros_time()
         msg = to_pointcloud_msg(points, frame_id=self.get_parameter("lidar_frame_id").value, timestamp=timestamp)
         self.ground_plane_publisher.publish(msg)
 
-    def visualize_centroids(self, clustered_points, timestamp=Time()):
+    def visualize_centroids(self, clustered_points, timestamp=None):
+        timestamp = self.get_ros_time()
         centroids = [cluster.mean(axis=0) for cluster in clustered_points]
         self.centroid_marker_publisher.publish(self.spheres(centroids, timestamp=timestamp))
 
     def spheres(
-        self, centers, color=ColorRGBA(r=0.0, g=1.0, b=0.0, a=1.0), timestamp=Time()
+        self, centers, color=ColorRGBA(r=0.0, g=1.0, b=0.0, a=1.0), timestamp=None
     ):
+        timestamp = self.get_ros_time()
         marker = Marker(
             header=Header(frame_id=self.get_parameter("lidar_frame_id").value, stamp=timestamp),
             id=0,
@@ -197,6 +201,16 @@ class PreProcessingNode(Node):
         )
 
         return marker
+
+    def visualize_output(self, points, timestamp=None):
+        timestamp=self.get_ros_time()
+        msg = to_pointcloud_msg(points, frame_id=self.get_parameter("lidar_frame_id").value, timestamp=timestamp)
+        self.cone_reconstructed_publisher.publish(msg)
+
+    
+    def get_ros_time(self):
+        now = self.get_clock().now()
+        return RosTime(sec=now.seconds_nanoseconds()[0], nanosec=now.seconds_nanoseconds()[1])
 
 def main():
     rclpy.init()
