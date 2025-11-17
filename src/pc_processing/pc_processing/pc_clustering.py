@@ -58,26 +58,6 @@ class PointCloudClustering:
 
         return np.array(centers)
 
-    def bin_points(self, points: np.ndarray) -> np.ndarray:
-        """
-        Bins points in an XY grid and removes bins with too high point density.
-        """
-        if points.size == 0:
-            return np.empty((0, 3))
-
-        # Compute 2D bin indices (based on XY)
-        x_bins = np.digitize(points[:, 0], bins=np.arange(-self.cluster_max_range, self.cluster_max_range))
-        y_bins = np.digitize(points[:, 1], bins=np.arange(-self.cluster_max_range, self.cluster_max_range))
-
-        # Combine x and y bins into unique bin IDs
-        bin_ids = x_bins * int(2 * self.cluster_max_range) + y_bins
-
-        # Count and filter bins with too many points
-        unique_ids, counts = np.unique(bin_ids, return_counts=True)
-        valid_bins = unique_ids[counts < self.max_points_in_bin]
-
-        return points[np.isin(bin_ids, valid_bins)]
-
 
 class PointCloudDBSCAN(PointCloudClustering):
     """

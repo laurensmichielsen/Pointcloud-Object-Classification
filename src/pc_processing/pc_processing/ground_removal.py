@@ -13,7 +13,8 @@ class GroundRemoval:
         number_of_y_chunks,
         distance_threshold,
         number_of_points_per_plane,
-        min_points_per_chunk
+        min_points_per_chunk,
+        remove_min_points
     ):
         self.number_of_iterations = number_of_iterations
         self.number_of_initial_seeds = number_of_initial_seeds
@@ -22,6 +23,7 @@ class GroundRemoval:
         self.distance_threshold = distance_threshold
         self.number_of_points_per_plane = number_of_points_per_plane
         self.min_points_per_chunk = min_points_per_chunk
+        self.remove_min_points = remove_min_points
 
     def remove_ground(self, points_2darray):
         """Removes the ground from a point cloud (to be implemented by subclasses)."""
@@ -57,10 +59,11 @@ class RansacGroundRemoval(GroundRemoval):
 
                 print(f"Number of points in the chunk: {len(chunk_points_xyz)}")
                 if chunk_points_xyz.shape[0] < self.min_points_per_chunk:
-                    continue  # skip empty or too small chunks TODO: check this for segments far away
+                    if chunk_points_xyz.shape[0] > self.remove_min_points:
+                        non_ground_all.append(chunk_points_full)
+                    continue  # skip empty or too small chunks 
 
                 # Run RANSAC on chunk
-                # TODO fix: error -> expects PC message got numpy array so fix
                 pcd = o3d.geometry.PointCloud()
                 pcd.points = o3d.utility.Vector3dVector(chunk_points_xyz)
 

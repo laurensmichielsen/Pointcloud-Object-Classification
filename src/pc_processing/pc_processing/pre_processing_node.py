@@ -35,13 +35,14 @@ class PreProcessingNode(Node):
             parameters=[
                 ("lidar_frame_id", "rslidar"),
                 ("input_pointcloud_topic", "/rslidar_points"),
-                ("ground_removal.number_of_iterations", 50),
+                ("ground_removal.number_of_iterations", 30),
                 ("ground_removal.number_of_initial_seeds", 10),
                 ("ground_removal.number_of_x_chunks", 10),
                 ("ground_removal.number_of_y_chunks", 10),
                 ("ground_removal.number_of_points_per_plane", 3),
                 ("ground_removal.distance_threshold", 0.02), # distance to the plane
-                ("ground_removal.min_points_per_chunk", 50),
+                ("ground_removal.min_points_per_chunk", 50), # min points required to process
+                ("ground_removal.remove_min_points", 15), # number of points required to not remove the segment
                 ("filter.vehicle_min_x", 0.0),
                 ("filter.vehicle_max_x", 2.9),
                 ("filter.vehicle_min_y", -1.0),
@@ -49,8 +50,8 @@ class PreProcessingNode(Node):
                 ("filter.cone_height", 0.505),
                 ("filter.voxel_size", [0.1, 0.1, 0.1]),
                 ("binning.max_points_in_bin", 900),
-                ("cluster.distance_threshold", .25),
-                ("cluster.min_samples", 15),
+                ("cluster.distance_threshold", .2),
+                ("cluster.min_samples", 9),
                 ("cluster.max_range", 15.0),
                 ("cluster.min_range", 0.5),
                 ("reconstruct.width_threshold", 0.1475),
@@ -83,6 +84,7 @@ class PreProcessingNode(Node):
             distance_threshold=self.get_parameter("ground_removal.distance_threshold").value,
             number_of_points_per_plane=self.get_parameter("ground_removal.number_of_points_per_plane").value,
             min_points_per_chunk=self.get_parameter("ground_removal.min_points_per_chunk").value,
+            remove_min_points=self.get_parameter("ground_removal.remove_min_points").value
         )
         # Setup the clusterer
         self.cluster = PointCloudDBSCAN(
