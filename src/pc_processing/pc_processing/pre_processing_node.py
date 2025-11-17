@@ -56,7 +56,7 @@ class PreProcessingNode(Node):
                 ("reconstruct.width_threshold", 0.1475),
                 ("reconstruct.max_height_threshold", 0.45),
                 ("reconstruct.min_height_threshold", 0.05),
-                ("reconstruct.safety_factor", 1.05),
+                ("reconstruct.safety_factor", 1.15),
                 ("reconstruct.include_base", False),
                 ("reconstruct.base_buffer", 0.05),
                 ("cv_viz_flag", True),
@@ -139,10 +139,10 @@ class PreProcessingNode(Node):
         # Step 1: convert the PC to a numpy 2D array
         points_2darray = parse_pointcloud_msg(raw_pointcloud)
         print(f"Shape of the input array: {points_2darray}")
-        self.points_2darray = points_2darray.copy()
         # check if we only have a 4D array, x, y, z, intensity
         if points_2darray.shape[1] > 4:
             points_2darray = points_2darray[:, :4]
+        self.points_2darray = points_2darray.copy()
         
         # Step 2: Perform vehicle filtering -> all points that are from the car need to be removed
         points_2darray = self.filter.vehicle_filter(points_2darray)
@@ -165,6 +165,8 @@ class PreProcessingNode(Node):
         
         # Step 5: cluster
         centroids = self.cluster.cluster(non_ground_points)
+
+        print(f"The shape of the centroids array: {centroids.shape}")
 
         # if debug mode is enabled, publish the centroids for viz
         if self.debug_mode:

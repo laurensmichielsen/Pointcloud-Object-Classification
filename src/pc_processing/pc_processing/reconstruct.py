@@ -7,7 +7,7 @@ class ReconstructCone:
         width_threshold: float = 0.1475,
         max_height_threshold: float = 0.45,
         min_height_threshold: float = 0.05,
-        safety_factor: float = 1.05,
+        safety_factor: float = 1.15,
         include_base: bool = False,
         base_buffer: float = 0.05
     ):
@@ -29,8 +29,6 @@ class ReconstructCone:
 
         w_s = self.width_threshold * self.safety_factor
         l_s = w_s  # square base
-        z_min = self.min_height_threshold
-        z_max = self.max_height_threshold
 
         for i, (cx, cy, cz) in enumerate(centroids):
             x_min = cx - w_s
@@ -41,8 +39,7 @@ class ReconstructCone:
             # Correct parentheses for bitwise AND
             mask_cluster = (
                 (points[:, 0] >= x_min) & (points[:, 0] <= x_max) &
-                (points[:, 1] >= y_min) & (points[:, 1] <= y_max) &
-                (points[:, 2] >= z_min) & (points[:, 2] <= z_max)
+                (points[:, 1] >= y_min) & (points[:, 1] <= y_max)
             )
 
 
@@ -50,4 +47,5 @@ class ReconstructCone:
             points_in_boxes.append(points_full_cluster)
 
         all_points = np.vstack(points_in_boxes)
+        print(f"Shape of all the points: {all_points.shape}")
         return all_points
