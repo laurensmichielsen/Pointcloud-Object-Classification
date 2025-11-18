@@ -26,7 +26,7 @@ class ReconstructCone:
         centroids: np.ndarray
     ):
         points_in_boxes = []
-
+        print(f"Shape of the points: {points.shape}")
         w_s = self.width_threshold * self.safety_factor
         l_s = w_s  # square base
 
@@ -46,6 +46,4 @@ class ReconstructCone:
             points_full_cluster = points[mask_cluster]
             points_in_boxes.append(points_full_cluster)
 
-        all_points = np.vstack(points_in_boxes)
-        print(f"Shape of all the points: {all_points.shape}")
-        return all_points
+        return points_in_boxes

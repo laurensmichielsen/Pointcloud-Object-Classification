@@ -17,6 +17,7 @@
   <exec_depend>visualization_msgs</exec_depend>
   <exec_depend>geometry_msgs</exec_depend>
   <exec_depend>builtin_interfaces</exec_depend>
+  <exec_depend>custom_msgs</exec_depend>
 
   <!-- testing / linting -->
   <test_depend>pytest</test_depend>

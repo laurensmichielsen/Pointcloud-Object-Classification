@@ -13,6 +13,7 @@ from std_msgs.msg import Header, ColorRGBA
 from geometry_msgs.msg import Vector3, Point
 from builtin_interfaces.msg import Duration
 from builtin_interfaces.msg import Time as RosTime
+from custom_msgs.msg import Clusters
 
 # local utilities / modules (ensure these modules export these names)
 from .utils import parse_pointcloud_msg, to_pointcloud_msg
@@ -134,13 +135,17 @@ class PreProcessingNode(Node):
         )
         self.cone_reconstructed_publisher = self.create_publisher(
             PointCloud2, "/viz/project/pointcloud/cone_proposals", 1
-        ) # TODO: make List of Pointclouds, for now just publish just a pc
+        )
+
+        self.proposal_cluster_publisher = self.create_publisher(
+            Clusters, "/project/proposal_clusters", 1
+        )
 
     
     def on_pointcloud_update(self, raw_pointcloud: PointCloud2):
         # Step 1: convert the PC to a numpy 2D array
         points_2darray = parse_pointcloud_msg(raw_pointcloud)
-        print(f"Shape of the input array: {points_2darray}")
+
         # check if we only have a 4D array, x, y, z, intensity
         if points_2darray.shape[1] > 4:
             points_2darray = points_2darray[:, :4]
@@ -158,9 +163,6 @@ class PreProcessingNode(Node):
         # Step 4: ground removal
         non_ground_points, ground_points, plane_models = self.ground_removal.remove_ground(points_2darray)
 
-        print(f"The number of non-ground points: {len(non_ground_points)}")
-        print(f"The shape of the non-ground points: {non_ground_points.shape}")
-
         # If debug mode is enabled, publish the filtered pc after ground_removal
         if self.debug_mode:
             self.visualize_ground_removed(non_ground_points, raw_pointcloud.header)
@@ -168,16 +170,19 @@ class PreProcessingNode(Node):
         # Step 5: cluster
         centroids = self.cluster.cluster(non_ground_points)
 
-        print(f"The shape of the centroids array: {centroids.shape}")
-
         # if debug mode is enabled, publish the centroids for viz
         if self.debug_mode:
             self.visualize_centroids(centroids, raw_pointcloud.header)
         # Step 6: reconstruct cones
         points_in_boxes = self.reconstruct.reconstruct(self.points_2darray, centroids)
         
-        print(points_in_boxes.shape)
-        self.visualize_output(points_in_boxes)
+        # if debug mode is enabled visualize the proposal cones
+        if self.debug_mode:
+            points_debug_boxes = np.vstack(points_in_boxes)
+            self.visualize_output(points_debug_boxes)
+        
+        # Step 7: create the list of Pointcloud messages
+        self.publish_proposals(points_in_boxes)
 
     def visualize_filtered_points(self, points, timestamp=None):
         timestamp = self.get_ros_time()
@@ -220,6 +225,16 @@ class PreProcessingNode(Node):
     def get_ros_time(self):
         now = self.get_clock().now()
         return RosTime(sec=now.seconds_nanoseconds()[0], nanosec=now.seconds_nanoseconds()[1])
+
+    def publish_proposals(self, clusters):
+        timestamp=self.get_ros_time()
+        pointcloud_list = []
+        for cluster in clusters:
+            pointcloud_list.append(to_pointcloud_msg(cluster, frame_id=self.get_parameter("lidar_frame_id").value, timestamp=timestamp))
+
+        final_msg = Clusters()
+        final_msg.clusters = pointcloud_list
+        final_msg.header.stamp = timestamp
 
 def main():
     rclpy.init()
