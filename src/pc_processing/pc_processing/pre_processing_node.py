@@ -52,7 +52,7 @@ class PreProcessingNode(Node):
                 ("filter.voxel_size", [0.1, 0.1, 0.1]),
                 ("binning.max_points_in_bin", 900),
                 ("cluster.distance_threshold", .2),
-                ("cluster.min_samples", 9),
+                ("cluster.min_samples", 40),
                 ("cluster.max_range", 15.0),
                 ("cluster.min_range", 0.5),
                 ("reconstruct.width_threshold", 0.1475),

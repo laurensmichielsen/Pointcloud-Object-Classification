@@ -60,7 +60,8 @@ class RansacGroundRemoval(GroundRemoval):
                 print(f"Number of points in the chunk: {len(chunk_points_xyz)}")
                 if chunk_points_xyz.shape[0] < self.min_points_per_chunk:
                     if chunk_points_xyz.shape[0] > self.remove_min_points:
-                        non_ground_all.append(chunk_points_full)
+                        # non_ground_all.append(chunk_points_full)
+                        continue
                     continue  # skip empty or too small chunks 
 
                 # Run RANSAC on chunk
