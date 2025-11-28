@@ -25,6 +25,7 @@ endif()
 
 rosidl_generate_interfaces(${PROJECT_NAME}
         msg/Clusters.msg
+        msg/Cone.msg
         
         DEPENDENCIES std_msgs sensor_msgs
         )

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>rviz_interface_plugin</name>
+  <version>0.1.0</version>
+  <description>The rviz_interface_plugin package</description>
+
+  <maintainer email="laurens.michielsen9@gmail.com">Laurens Michielsen</maintainer>
+  <author>Laurens Michielsen</author>
+
+  <license>Apache License 2.0</license>
+
+  <buildtool_depend>ament_cmake_auto</buildtool_depend>
+  <depend>geometry_msgs</depend>
+  <depend>libqt5-core</depend>
+  <depend>libqt5-widgets</depend>
+  <depend>qtbase5-dev</depend>
+  <depend>rviz_common</depend>
+  <depend>labeling_msgs</depend>
+  <depend>custom_msgs</depend> 
+  <depend>pcl_ros</depend>
+  <depend>rqt</depend>
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+    <rviz plugin="${prefix}/plugins/plugin_description.xml"/>
+  </export>
+</package>

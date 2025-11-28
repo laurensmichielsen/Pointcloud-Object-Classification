@@ -1,0 +1,4 @@
+std_msgs/String file
+---
+bool status
+int64 number_of_frames

@@ -1,5 +1,8 @@
 import numpy as np
 
+from geometry_msgs.msg import Point
+
+
 class ReconstructCone:
 
     def __init__(
@@ -47,3 +50,33 @@ class ReconstructCone:
             points_in_boxes.append(points_full_cluster)
 
         return points_in_boxes
+    
+    def reconstruct_labeling(
+        self,
+        points: np.ndarray,  # Nx4 with intensity as last column
+        centroids: np.ndarray
+    ):
+        print("Reconstructing")
+        points_list = []
+        new_centroids = []
+
+        w_s = self.width_threshold * self.safety_factor
+        l_s = w_s  # square base
+
+        for i, (cx, cy, cz) in enumerate(centroids):
+            x_min = cx - w_s
+            x_max = cx + w_s
+            y_min = cy - l_s
+            y_max = cy + l_s
+
+            mask_cluster = (
+                (points[:, 0] >= x_min) & (points[:, 0] <= x_max) &
+                (points[:, 1] >= y_min) & (points[:, 1] <= y_max)
+            )
+
+            points_full_cluster = points[mask_cluster]
+            points_list.append(points_full_cluster)
+            new_centroids.append(Point(x=cx, y=cy, z=cz))
+        print("Done reconstructing")
+        return new_centroids, points_list
+

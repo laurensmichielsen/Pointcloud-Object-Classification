@@ -1,0 +1,5 @@
+sensor_msgs/PointCloud2 pointcloud
+uint8 max_range
+---
+labeling_msgs/Cluster[] clusters
+sensor_msgs/PointCloud2 filtered_pointcloud

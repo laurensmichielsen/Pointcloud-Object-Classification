@@ -1,0 +1,16 @@
+<library path="rviz_interface_plugin">
+    <class name="rviz_interface_plugin/LabelPanel"
+           type="rviz_interface_plugin::LabelPanel"
+           base_class_type="rviz_common::Panel">
+        <description>
+          initial button.
+        </description>
+    </class>
+    <class name="rviz_interface_plugin/LabelTool"
+           type="rviz_interface_plugin::LabelTool"
+           base_class_type="rviz_common::Tool">
+        <description>
+          Labeling tool to place clusters.
+        </description>
+    </class>
+</library>

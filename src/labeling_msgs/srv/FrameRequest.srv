@@ -1,0 +1,5 @@
+std_msgs/String file
+int64 frame
+---
+bool status
+sensor_msgs/PointCloud2 pointcloud
