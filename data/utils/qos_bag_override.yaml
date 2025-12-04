@@ -1,0 +1,11 @@
+/flir_camera/image_raw:
+  history: keep_all
+  depth: 200
+  reliability: reliable
+  durability: volatile
+
+/rslidar_points:
+  history: keep_all
+  depth: 200
+  reliability: reliable
+  durability: volatile
