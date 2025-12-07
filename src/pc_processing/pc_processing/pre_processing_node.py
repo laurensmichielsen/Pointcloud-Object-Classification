@@ -52,7 +52,7 @@ class PreProcessingNode(Node):
                 ("filter.voxel_size", [0.1, 0.1, 0.1]),
                 ("binning.max_points_in_bin", 900),
                 ("cluster.distance_threshold", .2),
-                ("cluster.min_samples", 40),
+                ("cluster.min_samples", 9),
                 ("cluster.max_range", 15.0),
                 ("cluster.min_range", 0.5),
                 ("reconstruct.width_threshold", 0.1475),
@@ -182,7 +182,7 @@ class PreProcessingNode(Node):
             self.visualize_output(points_debug_boxes)
         
         # Step 7: create the list of Pointcloud messages
-        self.publish_proposals(points_in_boxes)
+        self.publish_proposals(points_in_boxes, centroids)
 
     def visualize_filtered_points(self, points, timestamp=None):
         timestamp = self.get_ros_time()
@@ -226,15 +226,25 @@ class PreProcessingNode(Node):
         now = self.get_clock().now()
         return RosTime(sec=now.seconds_nanoseconds()[0], nanosec=now.seconds_nanoseconds()[1])
 
-    def publish_proposals(self, clusters):
+    def publish_proposals(self, clusters, centroids):
         timestamp=self.get_ros_time()
         pointcloud_list = []
         for cluster in clusters:
             pointcloud_list.append(to_pointcloud_msg(cluster, frame_id=self.get_parameter("lidar_frame_id").value, timestamp=timestamp))
 
+        centroid_list = []
+        for centroid in centroids:
+            print("Processing centroids")
+            c = Point()
+            c.x = centroid[0]
+            c.y = centroid[1]
+            c.z = centroid[2]
+            centroid_list.append(c)
         final_msg = Clusters()
         final_msg.clusters = pointcloud_list
         final_msg.header.stamp = timestamp
+        final_msg.centroids = centroid_list
+        self.proposal_cluster_publisher.publish(final_msg)
 
 def main():
     rclpy.init()
